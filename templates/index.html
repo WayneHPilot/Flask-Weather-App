@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Live Weather Dashboard</h1>
+            <p>Check the current weather and temperature trends for any city</p>
+        </div>
+        
+        <div class="search-box">
+            <form id="search-form" class="search-form">
+                <input type="text" id="city" class="search-input" placeholder="Enter city name..." required>
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+        
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+        
+        <div id="results" class="results">
+            <div class="weather-card">
+                <h2 id="city-name" class="city-name">City Name</h2>
+                <div class="weather-info-container">
+                    <div class="weather-info">
+                        <div class="weather-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div class="weather-detail">
+                            <h3>Temperature</h3>
+                            <p id="temperature">--°C</p>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-info">
+                        <div class="weather-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="weather-detail">
+                            <h3>Wind Speed</h3>
+                            <p id="wind-speed">-- km/h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-info">
+                        <div class="weather-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="weather-detail">
+                            <h3>Humidity</h3>
+                            <p id="humidity">--%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-info">
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="weather-detail">
+                            <h3>Conditions</h3>
+                            <p id="conditions">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="graph-card">
+                <h2 class="graph-title">Temperature Throughout the Day</h2>
+                <div class="graph-container">
+                    <img id="temp-graph" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
